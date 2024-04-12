@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import Searchbar from "./components/Searchbar";
+import CurrentWeather from "./components/Currentweather";
 import Currentweather from "./components/Currentweather";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
   const [location, setLocation] = useState("");
-  const handleInputChange = (event) => {
-    setUserInput(event.target.value);
+  const handleInputChange = (value : string) => {
+    setUserInput(value);
   };
   const handleLocation = () => {
     if (userInput.trim() != "") {
@@ -24,7 +25,7 @@ export default function Home() {
           handleInputChange={handleInputChange}
           handleLocation={handleLocation}
         />
-        <Currentweather location={location} />
+        <CurrentWeather location={location} />
       </main>
       <section className=" w-[25%] h-full "></section>
     </div>
