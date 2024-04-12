@@ -1,18 +1,15 @@
-
+import * as actions from "@/actions"
 interface SearchbarProps {
   handleInputChange: (value: string) => void;
-  userInput: string;
   handleLocation: () => void;
 }
 
-export default function Searchbar({
-                                    handleInputChange, userInput, handleLocation,
-                                  }: SearchbarProps) {
+export default function Searchbar({ handleInputChange, handleLocation }: SearchbarProps) {
   return (
     <div className="w-[90%] h-20 flex justify-around items-end">
       <div className="w-full flex flex-row mb-2 justify-between">
-        <form className="w-4/5 flex">
-          <button type="submit" onClick={handleLocation} className="w-[10%]">
+        <form action={handleLocation} className="w-4/5 flex">
+          <button type="submit" className="w-[10%]">
             <img
               width="25"
               height="25"
@@ -23,8 +20,7 @@ export default function Searchbar({
           <input
             type="text"
             placeholder="Search something here..."
-            value={userInput}
-            onChange={handleInputChange}
+            onChange={(e) => handleInputChange(e.target.value)}
             className="w-full p-2 outline-none"
           />
         </form>

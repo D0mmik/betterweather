@@ -1,34 +1,21 @@
-import React, { PureComponent } from "react";
 import {
   LineChart,
   Line,
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "Morning",
-    uv: 20,
-    pv: 15,
-  },
-  {
-    name: "Aternoon",
-    uv: 20,
-    pv: 14,
-  },
-  {
-    name: "Evening",
-    uv: 20,
-    pv: 16,
-  },
-  {
-    name: "Night",
-    uv: 20,
-    pv: 50,
-  },
-];
 
-export default function TemperatureGraph() {
+export default function TemperatureGraph({tempData} : {tempData : Temperature}) {
+  let data = undefined;
+  if(tempData) {
+    const filteredTempData = {
+      Morning: tempData.morn,
+      Afternoon: tempData.day,
+      Evening: tempData.eve,
+      Night: tempData.night
+    };
+    data = Object.entries(filteredTempData).map(([name, pv]) => ({ name, pv }));
+  }
     return (
       <div className="w-1/2 bg-white/30 m-6 rounded-xl flex justify-center items-center flex-col">
         <div className="p-6 w-full h-full flex justify-around items-center flex-col">
@@ -41,22 +28,12 @@ export default function TemperatureGraph() {
             </ResponsiveContainer>
           </div>
           <section className="flex w-full justify-around">
-            <div className="flex justify-start items-center flex-col">
-              <p>Morning</p>
-              <h3>15°</h3>
+            {data?.map( temp =>
+              <div className="flex justify-start items-center flex-col">
+              <p className="capitalize">{temp.name}</p>
+              <h3>{Math.round(temp.pv)}°</h3>
             </div>
-            <div className="flex justify-start items-center flex-col">
-              <p>Afternoon</p>
-              <h3>14°</h3>
-            </div>
-            <div className="flex justify-start items-center flex-col">
-              <p>Evening</p>
-              <h3>16°</h3>
-            </div>
-            <div className="flex justify-start items-center flex-col">
-              <p>Night</p>
-              <h3>12°</h3>
-            </div>
+            )}
           </section>
         </div>
       </div>

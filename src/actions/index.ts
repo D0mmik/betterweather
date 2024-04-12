@@ -14,7 +14,7 @@ export async function getWeatherData(city: string): Promise<WeatherResponse> {
     const forecastResponse : AxiosResponse = await axios.get(forecastUrl);
 
     return {
-      current: currentResponse.data.main,
+      current: forecastResponse.data.current,
       hourly: forecastResponse.data.hourly,
       daily: forecastResponse.data.daily
     }
