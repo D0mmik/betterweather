@@ -2,13 +2,12 @@ import TemperatureGraph from "@/app/components/CurrentGraph";
 import {ConvertTime} from "@/utils";
 
 interface CurrentweatherProps {
-  location: string;
   weather : WeatherResponse
 }
 
-export default function CurrentWeather({location, weather} : CurrentweatherProps) {
+export default function CurrentWeather({weather} : CurrentweatherProps) {
   return (
-    <section className="w-[90%] bg-[#C4E2FF] h-2/5 flex rounded-xl justify-between mt-5 text-[#24609B] font-sans ">
+    <section className="w-[90%] bg-[#C4E2FF] h-2/5 flex rounded-xl justify-between mt-5 text-[#24609B] font-sans">
       <div className="w-[50%] m-8 flex justify-between flex-col">
         <div className="flex w-full justify-between items-center">
           <div className="flex flex-row items-center">
@@ -17,14 +16,12 @@ export default function CurrentWeather({location, weather} : CurrentweatherProps
               alt="marker--v1"
               className="h-5 m-2"
             />
-            <h2 className="text-xl capitalize">
-              {location == "" ? "Zadejte polohu" : location}
-            </h2>
+            <h2 className="text-xl capitalize">{weather?.city}</h2>
           </div>
           <h2>Dnes {ConvertTime(weather?.current.dt)}</h2>
         </div>
         <div className="flex w-full justify-between items-center flex-col ">
-          <h2 className="text-8xl mb-4">{Math.round(weather?.current.temp)}°</h2>
+          <h2 className="text-8xl mb-4">{Math.round(weather?.current.temp ?? 0)}°</h2>
           <p className="text-xl capitalize">{weather?.current.weather[0].description}</p>
         </div>
         <div className="flex w-full justify-between">

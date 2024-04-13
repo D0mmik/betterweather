@@ -1,3 +1,4 @@
+"use client"
 import {
   LineChart,
   Line,
@@ -28,8 +29,8 @@ export default function TemperatureGraph({tempData} : {tempData : Temperature}) 
             </ResponsiveContainer>
           </div>
           <section className="flex w-full justify-around">
-            {data?.map( temp =>
-              <div className="flex justify-start items-center flex-col">
+            {data?.map( (temp) =>
+              <div key={temp.name} className="flex justify-start items-center flex-col">
               <p className="capitalize">{temp.name}</p>
               <h3>{Math.round(temp.pv)}°</h3>
             </div>

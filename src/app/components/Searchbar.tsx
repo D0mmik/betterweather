@@ -1,14 +1,15 @@
+'use client'
+import {useFormState} from "react-dom"
 import * as actions from "@/actions"
-interface SearchbarProps {
-  handleInputChange: (value: string) => void;
-  handleLocation: () => void;
-}
 
-export default function Searchbar({ handleInputChange, handleLocation }: SearchbarProps) {
+export default function Searchbar() {
+
+  const [formState, action] = useFormState(actions.goToWeather, {message : ""});
+
   return (
     <div className="w-[90%] h-20 flex justify-around items-end">
       <div className="w-full flex flex-row mb-2 justify-between">
-        <form action={handleLocation} className="w-4/5 flex">
+        <form action={action} className="w-4/5 flex">
           <button type="submit" className="w-[10%]">
             <img
               width="25"
@@ -18,9 +19,9 @@ export default function Searchbar({ handleInputChange, handleLocation }: Searchb
             />
           </button>
           <input
+            name="location"
             type="text"
             placeholder="Search something here..."
-            onChange={(e) => handleInputChange(e.target.value)}
             className="w-full p-2 outline-none"
           />
         </form>

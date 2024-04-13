@@ -1,4 +1,5 @@
 interface WeatherResponse {
+  city : string,
   current: CurrentWeather;
   hourly: HourlyWeather[];
   daily: DailyWeather[];
