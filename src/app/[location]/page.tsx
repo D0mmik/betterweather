@@ -2,6 +2,8 @@ import Searchbar from "../components/Searchbar";
 import CurrentWeather from "../components/Currentweather";
 import * as actions from "@/actions";
 import {notFound} from "next/navigation";
+import HourlyWeather from "@/app/components/HourlyWeather";
+import WeatherColumn from "@/app/components/WeatherColumn";
 
 export default async function WeatherPage(props : {params : { location: string}}) {
   const getWeather = async (location: string) => {
@@ -16,16 +18,9 @@ export default async function WeatherPage(props : {params : { location: string}}
     <>
       <main className="w-[55%] h-full flex justify-start items-center flex-col">
         <Searchbar />
-        {!weather && (
-          <section className="w-[90%] bg-[#C4E2FF] h-2/5 rounded-xl mt-5 animate-pulse flex justify-center items-center">
-            <p>Loading..</p>
-          </section>
-        )}
-        {weather && <CurrentWeather weather={weather} />}
+        <CurrentWeather weather={weather}/>
       </main>
-      <section className="w-[25%] h-full">
-        test2
-      </section>
+      <WeatherColumn weather={weather}/>
     </>
   );
 }
