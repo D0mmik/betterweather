@@ -28,8 +28,8 @@ function GaugePointer() {
     { x: 5, y: 0 },
   ];
   const backTarget = {
-    x: cx - 50 * Math.sin(valueAngle),
-    y: cy + 50 * Math.cos(valueAngle),
+    x: cx - 57 * Math.sin(valueAngle),
+    y: cy + 57 * Math.cos(valueAngle),
   };
 
   const rotationAngle = valueAngle * (180 / Math.PI);
@@ -65,15 +65,15 @@ function GaugePointer() {
 export default function WindGraph({ WindSpeed }: WindGraphProps) {
   return (
     <GaugeContainer
-      width={150}
-      height={150}
+      width={130}
+      height={130}
       startAngle={360}
       endAngle={0}
       value={WindSpeed}
       valueMax={360}
     >
-      <GaugeReferenceArc />
-      <GaugeValueArc />
+      <GaugeReferenceArc className="no-color" />
+      <GaugeValueArc className="no-color" />
       <GaugePointer />
     </GaugeContainer>
   );

@@ -1,5 +1,5 @@
 import TemperatureGraph from "@/app/components/CurrentGraph";
-import {ConvertTime} from "@/utils";
+import { ConvertTime } from "@/utils";
 
 interface CurrentweatherProps {
   weather : WeatherResponse
@@ -39,7 +39,7 @@ export default function CurrentWeather({weather} : CurrentweatherProps) {
               alt="water"
               className=" h-5 m-2"
             />
-            <h2>{weather?.current.dew_point} %</h2>
+            <h2>{weather?.current.humidity} %</h2>
           </div>
           <div className=" flex flex-row items-center">
             <img
@@ -51,7 +51,7 @@ export default function CurrentWeather({weather} : CurrentweatherProps) {
           </div>
         </div>
       </div>
-      <TemperatureGraph tempData={weather?.daily[0].temp}/>
+      <TemperatureGraph tempData={weather?.daily[0].temp} />
     </section>
   );
 }

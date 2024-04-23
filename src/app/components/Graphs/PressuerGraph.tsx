@@ -78,7 +78,7 @@ export default function PressuerGraph({ Pressure }: PressuerGraphProps) {
         },
       })}
     >
-      <GaugeReferenceArc />
+      <GaugeReferenceArc className="gauge-color" />
       <GaugeValueArc />
       <GaugePointer />
     </GaugeContainer>
