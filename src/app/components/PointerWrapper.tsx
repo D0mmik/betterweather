@@ -19,11 +19,11 @@ export default function PointerWrapper({ weather }: PointerWrapperProps) {
         PointerGraph={<WindGraph WindSpeed={weather?.current.wind_deg} />}
       />
       <WeatherPointer
-        PointerTitle={"Rain Chaise"}
-        PointerDesc={"Today rain chanse"}
-        PointerValue={weather?.current.humidity + " %"}
+        PointerTitle={"Rain Chance"}
+        PointerDesc={"Today rain chance"}
+        PointerValue={weather?.daily[0].pop + " %"}
         PointerCompas={false}
-        PointerGraph={<RainGraph RainPercentage={weather?.current.humidity} />}
+        PointerGraph={<RainGraph RainPercentage={weather?.daily[0].pop} />}
       />
       <WeatherPointer
         PointerTitle={"Pressure"}

@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 .no-color {
-  fill: none;
+  fill: none !important;
+  background: none;
 }
 .gauge-color {
-  fill: #c4e2ff;
+  fill: #c4e2ff !important;
 }
 .backPic {
   background-image: url(./assets/Ellipse.png);

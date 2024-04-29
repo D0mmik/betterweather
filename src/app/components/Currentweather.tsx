@@ -39,7 +39,7 @@ export default function CurrentWeather({weather} : CurrentweatherProps) {
               alt="water"
               className=" h-5 m-2"
             />
-            <h2>{weather?.current.humidity} %</h2>
+            <h2>{weather?.daily[0].pop} %</h2>
           </div>
           <div className=" flex flex-row items-center">
             <img
