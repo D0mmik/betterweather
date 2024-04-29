@@ -3,6 +3,7 @@ interface WeatherPointerProps {
   PointerDesc: string;
   PointerCompas: boolean;
   PointerValue: string;
+  PointerGraph: JSX.Element;
 }
 
 export default function WeatherPointer({

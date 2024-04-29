@@ -35,7 +35,7 @@ export default function PointerWrapper({ weather }: PointerWrapperProps) {
       <WeatherPointer
         PointerTitle={"UV Index"}
         PointerDesc={"Today UV Index"}
-        PointerValue={weather?.current.uvi}
+        PointerValue={weather?.current.uvi.toString()}
         PointerCompas={false}
         PointerGraph={<UVGraph UVIndex={weather?.current.uvi} />}
       />
