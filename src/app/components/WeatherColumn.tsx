@@ -1,7 +1,10 @@
 import HourlyWeather from "@/app/components/HourlyWeather";
 
-export default function WeatherColumn({weather} : {weather : WeatherResponse}) {
-
+export default function WeatherColumn({
+  weather,
+}: {
+  weather: WeatherResponse;
+}) {
   return (
     <section className="w-[25%] h-full flex items-center flex-col">
       <div className="flex justify-around py-6 w-full">
@@ -12,11 +15,12 @@ export default function WeatherColumn({weather} : {weather : WeatherResponse}) {
       <div className="w-[80%]">
         <h3 className="text-lg my-5">Today</h3>
         <div className="overflow-auto whitespace-nowrap">
-          <HourlyWeather hourly={weather.hourly[0]} active/>
-          {weather.hourly.slice(1, 25).map((hourly, index) =>
-            <HourlyWeather key={hourly.dt} hourly={weather.hourly[index + 1]}/>)}
+          <HourlyWeather hourly={weather.hourly[0]} active />
+          {weather.hourly.slice(1, 25).map((hourly, index) => (
+            <HourlyWeather key={hourly.dt} hourly={weather.hourly[index + 1]} />
+          ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
