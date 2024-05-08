@@ -1,6 +1,6 @@
 "use server"
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
-import {redirect} from "next/navigation";
+import {notFound, redirect} from "next/navigation";
 import {revalidatePath} from "next/cache";
 
 const API_KEY = '79e9110f4e47d681b1dedd4758c448f4';
@@ -24,7 +24,7 @@ export async function getWeatherData(city: string): Promise<{ current: any; city
   try {
     const geoResponse: AxiosResponse = await axiosInstance.get(`/geo/1.0/direct?q=${city}`);
     if (!geoResponse.data || geoResponse.data.length === 0) {
-      throw new Error("City not found");
+      notFound();
     }
     const {lat, lon}: Coords = geoResponse.data[0];
 
