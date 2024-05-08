@@ -1,7 +1,8 @@
+"use server"
 import Searchbar from "@/app/components/Searchbar";
 import CurrentWeather from "@/app/components/Currentweather";
 
-export default function Loading() {
+export default async function Loading() {
   return (
   <>
     <main className="w-[55%] h-full flex justify-start items-center flex-col">

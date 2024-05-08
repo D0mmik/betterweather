@@ -1,6 +1,7 @@
 "use server"
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import {redirect} from "next/navigation";
+import {revalidatePath} from "next/cache";
 
 const API_KEY = '79e9110f4e47d681b1dedd4758c448f4';
 
@@ -8,8 +9,7 @@ const axiosInstance: AxiosInstance = axios.create({
   baseURL: 'https://api.openweathermap.org',
 });
 
-export async function getWeatherData(city: string): Promise<WeatherResponse> {
-
+export async function getWeatherData(city: string): Promise<{ current: any; city: any; timezone: any; daily: any; hourly: any }> {
   axiosInstance.interceptors.request.use(config => {
     config.params = {
       ...config.params,
@@ -19,9 +19,13 @@ export async function getWeatherData(city: string): Promise<WeatherResponse> {
   }, error => {
     return Promise.reject(error);
   });
+  console.log("fetching data for " + city)
 
   try {
     const geoResponse: AxiosResponse = await axiosInstance.get(`/geo/1.0/direct?q=${city}`);
+    if (!geoResponse.data || geoResponse.data.length === 0) {
+      throw new Error("City not found");
+    }
     const {lat, lon}: Coords = geoResponse.data[0];
 
     const forecastResponse: AxiosResponse = await axiosInstance.get(`/data/3.0/onecall`, {
@@ -36,6 +40,7 @@ export async function getWeatherData(city: string): Promise<WeatherResponse> {
 
     return {
       city: geoResponse.data[0]?.local_names?.cs ?? geoResponse.data[0].name,
+      timezone: forecastResponse.data.timezone,
       current: forecastResponse.data.current,
       hourly: forecastResponse.data.hourly,
       daily: forecastResponse.data.daily
@@ -62,5 +67,6 @@ export async function goToWeather(formState: { message: string }, formData: Form
     }
     return {message: "Something went wrong.."};
   }
-  redirect("/" + location)
+  revalidatePath("/location/" + location.toLowerCase())
+  redirect("/location/" + location.toLowerCase())
 }

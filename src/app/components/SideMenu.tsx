@@ -1,9 +1,9 @@
+"use server"
 import SideMenuButton from "./SideMenuButton";
-import logo from "/LogoApp.png";
 
-export default function SideMenu() {
+export default async function SideMenu() {
   return (
-    <div className="  w-full h-full flex items-center flex-col ">
+    <div className=" w-full h-full flex items-center flex-col font-sans font-light">
       <div className=" flex flex-row mt-8 items-center justify-start w-7/12">
         <img src="/LogoApp.png" alt="" width={50} height={50} />
         <h1 className=" m-3 text-2xl font-medium">Caucane</h1>

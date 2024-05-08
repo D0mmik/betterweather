@@ -1,4 +1,5 @@
 interface WeatherResponse {
+  timezone : string,
   city : string,
   current: CurrentWeather;
   hourly: HourlyWeather[];
@@ -88,5 +89,5 @@ interface Weather {
 
 interface Coords {
   lon : number;
-  lat : number
+  lat : number;
 }

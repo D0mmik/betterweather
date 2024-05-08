@@ -1,9 +1,10 @@
+"use server"
 interface SideMenuButtonProps {
   ButtonTitle: string;
   backgroundImage: string;
 }
 
-export default function SideMenuButton({
+export default async function SideMenuButton({
   ButtonTitle,
   backgroundImage,
 }: SideMenuButtonProps) {

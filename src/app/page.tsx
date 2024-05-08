@@ -1,3 +1,4 @@
+"use server"
 import Searchbar from "@/app/components/Searchbar";
 import CurrentWeather from "@/app/components/Currentweather";
 

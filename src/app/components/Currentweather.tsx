@@ -1,13 +1,17 @@
+"use server"
 import TemperatureGraph from "@/app/components/CurrentGraph";
-import { ConvertTime } from "@/utils";
+import {ConvertTime, getColor} from "@/utils";
 
 interface CurrentweatherProps {
   weather : WeatherResponse
 }
 
-export default function CurrentWeather({weather} : CurrentweatherProps) {
+export default async function CurrentWeather({weather} : CurrentweatherProps) {
+
+  let colors : {bgColor : string; textColor : string}  = { bgColor: '', textColor: '' };
+    colors = await getColor(new Date(weather.current.dt * 1000).toLocaleString(undefined,{timeZone : weather.timezone }));
   return (
-    <section className="w-[90%] bg-[#C4E2FF] h-2/5 flex rounded-xl justify-between mt-5 text-[#24609B] font-sans">
+    <section className={`w-[90%] h-2/5 flex rounded-xl justify-between mt-5 font-sans ${colors.bgColor} ${colors.textColor} `}>
       <div className="w-[50%] m-8 flex justify-between flex-col">
         <div className="flex w-full justify-between items-center">
           <div className="flex flex-row items-center">
@@ -18,7 +22,7 @@ export default function CurrentWeather({weather} : CurrentweatherProps) {
             />
             <h2 className="text-xl capitalize">{weather?.city}</h2>
           </div>
-          <h2>Dnes {ConvertTime(weather?.current.dt)}</h2>
+          <h2>Dnes {await ConvertTime(weather?.current.dt, weather?.timezone)}</h2>
         </div>
         <div className="flex w-full justify-between items-center flex-col ">
           <h2 className="text-8xl mb-4">{Math.round(weather?.current.temp ?? 0)}°</h2>
@@ -51,7 +55,7 @@ export default function CurrentWeather({weather} : CurrentweatherProps) {
           </div>
         </div>
       </div>
-      <TemperatureGraph tempData={weather?.daily[0].temp} />
+      <TemperatureGraph tempData={weather?.daily[0].temp}/>
     </section>
   );
 }
