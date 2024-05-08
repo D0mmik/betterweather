@@ -10,7 +10,7 @@ import WindGraph from "./Graphs/WindGraph";
 
 export default function PointerWrapper({ weather }: PointerWrapperProps) {
   return (
-    <section className="  w-[90%] h-2/5  grid grid-cols-2 grid-rows-2 gap-9 mt-8 font-sans">
+    <section className="mt-8 grid h-2/5 grid-cols-2 grid-rows-2 gap-9 font-sans w-[90%]">
       <WeatherPointer
         PointerTitle={"Wind"}
         PointerDesc={"Today wind speed"}

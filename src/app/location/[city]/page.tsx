@@ -22,7 +22,7 @@ export default async function WeatherPage(props: {
 
   return (
     <>
-      <main className="w-[55%] h-full flex justify-start items-center flex-col">
+      <main className="flex h-full flex-col items-center justify-start w-[55%]">
         <Searchbar/>
         <CurrentWeather weather={weather}/>
         <PointerWrapper weather={weather}/>

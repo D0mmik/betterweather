@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={jakarta.className}>
         <div className="w-full h-screen flex justify-start items-center flex-row divide-x divide-[#E1E8EC]">
-          <nav className="w-1/5 h-full">
+          <nav className="h-full w-1/5">
             <SideMenu />
           </nav>
           {children}

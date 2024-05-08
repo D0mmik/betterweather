@@ -1,35 +1,37 @@
 "use server"
 import SideMenuButton from "./SideMenuButton";
+import Link from "next/link";
+import Image from "next/image";
 
 export default async function SideMenu() {
   return (
-    <div className=" w-full h-full flex items-center flex-col font-sans font-light">
-      <div className=" flex flex-row mt-8 items-center justify-start w-7/12">
-        <img src="/LogoApp.png" alt="" width={50} height={50} />
-        <h1 className=" m-3 text-2xl font-medium">Caucane</h1>
+    <div className="flex h-full w-full flex-col items-center font-sans font-light">
+      <div className="mt-8 flex w-7/12 flex-row items-center justify-start">
+        <Image src="/LogoApp.svg" alt="" width={50} height={50} />
+        <Link href="/" className="m-3 text-2xl font-medium">Caucane</Link>
       </div>
-      <div className=" h-full flex w-full flex-col items-end justify-between mt-14">
-        <div className=" h-full flex w-10/12 flex-col items-center ">
+      <div className="mt-14 flex h-full w-full flex-col items-end justify-between">
+        <div className="flex h-full w-10/12 flex-col items-center">
           <div className=" flex flex-row items-center justify-start border-r-[1px] border-[#1F1E31] m-4 w-full">
-            <img src="/Category.png" alt="" className=" p-4" />
-            <button className=" ">Dashboard</button>
+            <Image width="58" height="58" src="/Category.svg" alt="" className="p-4" />
+            <button className="">Dashboard</button>
           </div>
-          <SideMenuButton ButtonTitle="Map" backgroundImage="/Activites.png" />
+          <SideMenuButton ButtonTitle="Map" backgroundImage="/Activity.svg" />
           <SideMenuButton
             ButtonTitle="Saved Location"
-            backgroundImage="/Heart.png"
+            backgroundImage="/Heart.svg"
           />
           <SideMenuButton
             ButtonTitle="Calendar"
-            backgroundImage="/Calendar.png"
+            backgroundImage="/Calendar.svg"
           />
           <SideMenuButton
             ButtonTitle="Settings"
-            backgroundImage="/Setting.png"
+            backgroundImage="/Setting.svg"
           />
         </div>
-        <div className=" flex w-10/12 flex-col items-center ">
-          <SideMenuButton ButtonTitle="Log Out" backgroundImage="/Logout.png" />
+        <div className="flex w-10/12 flex-col items-center">
+          <SideMenuButton ButtonTitle="Log Out" backgroundImage="/Logout.svg" />
         </div>
       </div>
     </div>

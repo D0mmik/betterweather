@@ -1,20 +1,21 @@
 'use client'
 import {useFormState} from "react-dom"
 import * as actions from "@/actions"
+import Image from "next/image";
 
 export default function Searchbar() {
 
   const [formState, action] = useFormState(actions.goToWeather, {message : ""});
 
   return (
-    <div className="w-[90%] h-20 flex justify-around items-end">
-      <div className="w-full flex flex-row mb-2 justify-between">
-        <form action={action} className="w-4/5 flex">
+    <div className="flex h-20 items-end justify-around w-[90%]">
+      <div className="mb-2 flex w-full flex-row justify-between">
+        <form action={action} className="flex w-4/5">
           <button type="submit" className="w-[10%]">
-            <img
+            <Image
               width="25"
               height="25"
-              src="https://img.icons8.com/ios/50/search--v1.png"
+              src="/Search.svg"
               alt="search--v1"
             />
           </button>
@@ -25,11 +26,11 @@ export default function Searchbar() {
             className="w-full p-2 outline-none"
           />
         </form>
-        <div className="w-[15%] h-full flex flex-row justify-between items-center">
-          <img
+        <div className="flex h-full flex-row items-center justify-between w-[15%]">
+          <Image
             width="30"
             height="30"
-            src="https://img.icons8.com/ios/50/000000/appointment-reminders--v1.png"
+            src="/Notification.svg"
             alt="appointment-reminders--v1"
           />
           <div className="bg-[#D9D9D9] rounded-full h-10 w-10"></div>

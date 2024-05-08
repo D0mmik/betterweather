@@ -5,10 +5,10 @@ import CurrentWeather from "@/app/components/Currentweather";
 export default async function HomePage() {
   return (
     <>
-      <main className="w-[55%] h-full flex justify-start items-center flex-col">
+      <main className="flex h-full flex-col items-center justify-start w-[55%]">
         <Searchbar />
       </main>
-      <section className="w-[25%] h-full">test2</section>
+      <section className="h-full w-[25%]">test2</section>
     </>
   );
 }
