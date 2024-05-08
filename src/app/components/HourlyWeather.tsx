@@ -12,7 +12,9 @@ export default async function HourlyWeather({hourly, active, timezone} : {hourly
   const iconUrl = `https://openweathermap.org/img/wn/${hourly.weather[0].icon}@2x.png`;
   return (
     <div className="inline-block pr-4">
-      <div className={`flex flex-col justify-evenly items-center w-20 h-32 rounded-xl ${active ? `${colors.bgColor} ${colors.textColor}` : ''}`}>
+      <div className={`flex flex-col justify-evenly items-center w-20 h-32 rounded-xl`}
+      style={active ? {backgroundColor : colors.bgColor, color : colors.textColor} : undefined}
+      >
         <p className="text-gray-700">{active ? "Now" : new Date(hourly.dt * 1000).getHours().toString() + ":00"}</p>
         <div>
           <img src={iconUrl} alt="Weather Icon" width={70} height={70}/>

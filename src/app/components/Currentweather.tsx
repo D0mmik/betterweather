@@ -11,7 +11,7 @@ export default async function CurrentWeather({weather} : CurrentweatherProps) {
   let colors : {bgColor : string; textColor : string}  = { bgColor: '', textColor: '' };
     colors = await getColor(new Date(weather.current.dt * 1000).toLocaleString(undefined,{timeZone : weather.timezone }));
   return (
-    <section className={`w-[90%] h-2/5 flex rounded-xl justify-between mt-5 font-sans ${colors.bgColor} ${colors.textColor} `}>
+    <section className={`w-[90%] h-2/5 flex rounded-xl justify-between mt-5 font-sans`} style={{backgroundColor : colors.bgColor, color : colors.textColor}}>
       <div className="w-[50%] m-8 flex justify-between flex-col">
         <div className="flex w-full justify-between items-center">
           <div className="flex flex-row items-center">

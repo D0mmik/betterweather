@@ -26,21 +26,21 @@ export const getColor = async (date : string)  => {
   let bgColor, textColor;
 
   switch (true) {
-    case time >= 4 && time < 12:
-      bgColor = "bg-morning";
-      textColor = "text-black";
+    case time >= 4 && time < 16:
+      bgColor = "#FFC085";
+      textColor = "#000000";
       break;
     case time >= 12 && time < 18:
-      bgColor = "bg-midday";
-      textColor = "text-blue";
+      bgColor = "#BADCFF";
+      textColor = "#24609B";
       break;
     case time >= 18 && time < 22:
-      bgColor = "bg-afternoon";
-      textColor = "text-white";
+      bgColor = "#627685";
+      textColor = "#FFFFFF";
       break;
     default:
-      bgColor = "bg-evening";
-      textColor = "text-white";
+      bgColor = "#233B52";
+      textColor = "#FFFFFF";
       break;
   }
 
