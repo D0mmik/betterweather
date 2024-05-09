@@ -24,8 +24,8 @@ export default function RainGraph({ UVIndex }: UVGraphProps) {
       {...settings}
       startAngle={-120}
       endAngle={120}
-      cornerRadius="50%"
-      innerRadius={55}
+      cornerRadius="58%"
+      innerRadius="92%"
       text={textgraph}
       sx={(theme) => ({
         [`& .${gaugeClasses.valueText}`]: {

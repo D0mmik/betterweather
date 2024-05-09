@@ -17,6 +17,8 @@ export default function PointerWrapper({ weather }: PointerWrapperProps) {
         PointerValue={weather?.current.wind_speed + " km/h"}
         PointerCompas={true}
         PointerGraph={<WindGraph WindSpeed={weather?.current.wind_deg} />}
+        imageUrl="/Ellipse.png"
+        bgImage={true}
       />
       <WeatherPointer
         PointerTitle={"Rain Chance"}
@@ -31,6 +33,8 @@ export default function PointerWrapper({ weather }: PointerWrapperProps) {
         PointerValue={weather?.current.pressure + " hpa"}
         PointerCompas={false}
         PointerGraph={<PressuerGraph Pressure={weather?.current.pressure} />}
+        imageUrl="/SmallEllipse.png"
+        bgImage={true}
       />
       <WeatherPointer
         PointerTitle={"UV Index"}

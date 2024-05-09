@@ -1,3 +1,5 @@
+import {notFound} from "next/navigation";
+
 interface WindGraphProps {
   WindSpeed: number;
 }
@@ -42,12 +44,12 @@ function GaugePointer() {
         x2={target.x}
         y2={target.y}
         stroke="#24609B"
-        strokeWidth="5"
+        strokeWidth="3"
       />
       <circle
         cx={backTarget.x}
         cy={backTarget.y}
-        r={5}
+        r={4}
         fill="#FFFFFF"
         stroke="#24609B"
       />
@@ -72,8 +74,8 @@ export default function WindGraph({ WindSpeed }: WindGraphProps) {
       value={WindSpeed}
       valueMax={360}
     >
-      <GaugeReferenceArc className="no-color" />
-      <GaugeValueArc className="no-color" />
+      <GaugeReferenceArc style={{fill : "none", background : "none"}} />
+      <GaugeValueArc style={{fill : "none", background : "none"}} />
       <GaugePointer />
     </GaugeContainer>
   );

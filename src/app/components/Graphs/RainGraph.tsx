@@ -22,7 +22,8 @@ export default function RainGraph({ RainPercentage }: RainGraphProps) {
   return (
     <Gauge
       {...settings}
-      cornerRadius="50%"
+      cornerRadius="58%"
+      innerRadius="87%"
       text={textgraph}
       sx={(theme) => ({
         [`& .${gaugeClasses.valueText}`]: {
