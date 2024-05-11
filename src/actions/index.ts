@@ -67,6 +67,6 @@ export async function goToWeather(formState: { message: string }, formData: Form
     }
     return {message: "Something went wrong.."};
   }
-  revalidatePath("/location/" + location.toLowerCase())
-  redirect("/location/" + location.toLowerCase())
+  revalidatePath("/dashboard/" + location.toLowerCase())
+  redirect("/dashboard/" + location.toLowerCase())
 }

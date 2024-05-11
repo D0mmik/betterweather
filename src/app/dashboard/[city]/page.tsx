@@ -17,6 +17,7 @@ export default async function WeatherPage(props: {
   params: { city: string };
 }) {
   const weather: WeatherResponse = await getCachedWeather(props.params.city);
+  console.log(props.params.city)
 
   if (!weather) notFound();
 

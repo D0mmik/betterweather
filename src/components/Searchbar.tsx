@@ -24,7 +24,7 @@ export default function Searchbar() {
             name="location"
             type="text"
             placeholder="Search something here..."
-            className="w-full p-2 outline-none"
+            className="w-full p-2 outline-none rounded-xl"
           />
         </form>
         <div className="flex h-full flex-row items-center justify-between w-[15%]">
@@ -35,7 +35,7 @@ export default function Searchbar() {
             alt="appointment-reminders--v1"
           />
           <div className="bg-[#D9D9D9] rounded-full h-10 w-10 flex justify-center items-center">
-            <UserButton></UserButton>
+            <UserButton/>
           </div>
         </div>
       </div>

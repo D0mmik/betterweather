@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import SideMenu from "./components/SideMenu";
+import SideMenu from "@/components/SideMenu";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body className={jakarta.className}>
         <div className="w-full h-screen flex justify-start items-center flex-row divide-x divide-[#E1E8EC]">
@@ -31,5 +33,6 @@ export default function RootLayout({
         </div>
       </body>
     </html>
+      </ClerkProvider>
   );
 }

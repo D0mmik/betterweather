@@ -1,8 +1,10 @@
 "use client";
+import PressureGraph from "./Graphs/PressureGraph";
+
 interface PointerWrapperProps {
   weather: WeatherResponse;
 }
-import PressuerGraph from "./Graphs/PressuerGraph";
+import PressuerGraph from "./Graphs/PressureGraph";
 import RainGraph from "./Graphs/RainGraph";
 import UVGraph from "./Graphs/UVGraph";
 import WeatherPointer from "./WeatherPointer";
@@ -14,32 +16,32 @@ export default function PointerWrapper({ weather }: PointerWrapperProps) {
       <WeatherPointer
         PointerTitle={"Wind"}
         PointerDesc={"Today wind speed"}
-        PointerValue={weather?.current.wind_speed + " km/h"}
+        PointerValue={Math.round(weather?.current.wind_speed * 3.6) + " km/h"}
         PointerCompas={true}
         PointerGraph={<WindGraph WindSpeed={weather?.current.wind_deg} />}
-        imageUrl="/Ellipse.png"
+        imageUrl="/Ellipse.svg"
         bgImage={true}
       />
       <WeatherPointer
         PointerTitle={"Rain Chance"}
         PointerDesc={"Today rain chance"}
-        PointerValue={weather?.daily[0].pop + " %"}
+        PointerValue={Math.round(weather?.daily[0].pop * 100) + " %"}
         PointerCompas={false}
-        PointerGraph={<RainGraph RainPercentage={weather?.daily[0].pop} />}
+        PointerGraph={<RainGraph RainPercentage={Math.round(weather?.daily[0].pop * 100)} />}
       />
       <WeatherPointer
         PointerTitle={"Pressure"}
         PointerDesc={"Today Pressure"}
         PointerValue={weather?.current.pressure + " hpa"}
         PointerCompas={false}
-        PointerGraph={<PressuerGraph Pressure={weather?.current.pressure} />}
-        imageUrl="/SmallEllipse.png"
+        PointerGraph={<PressureGraph Pressure={weather?.current.pressure} />}
+        imageUrl="/SmallEllipse.svg"
         bgImage={true}
       />
       <WeatherPointer
         PointerTitle={"UV Index"}
         PointerDesc={"Today UV Index"}
-        PointerValue={weather?.current.uvi.toString()}
+        PointerValue={Math.round(weather?.current.uvi).toString()}
         PointerCompas={false}
         PointerGraph={<UVGraph UVIndex={weather?.current.uvi} />}
       />

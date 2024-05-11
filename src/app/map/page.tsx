@@ -1,7 +1,13 @@
-export default function SettingsPage() {
+"use server"
+import Searchbar from "@/components/Searchbar";
+
+export default async function MapPage() {
   return(
-    <div className="flex justify-center items-center w-full h-full">
-      settings
-    </div>
+    <>
+      <main className="flex h-full flex-col items-center justify-start w-[55%]">
+        <Searchbar />
+        map
+      </main>
+    </>
   )
 }

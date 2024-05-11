@@ -67,8 +67,6 @@ function GaugePointer() {
 export default function WindGraph({ WindSpeed }: WindGraphProps) {
   return (
     <GaugeContainer
-      width={130}
-      height={130}
       startAngle={360}
       endAngle={0}
       value={WindSpeed}

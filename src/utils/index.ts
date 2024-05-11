@@ -26,7 +26,7 @@ export const getColor = async (date : string)  => {
   let bgColor, textColor;
 
   switch (true) {
-    case time >= 4 && time < 16:
+    case time >= 4 && time < 12:
       bgColor = "#FFC085";
       textColor = "#000000";
       break;
