@@ -1,10 +1,10 @@
 "use server"
-import Searchbar from "../../components/Searchbar";
-import CurrentWeather from "../../components/Currentweather";
+import Searchbar from "@/components/Searchbar";
+import CurrentWeather from "@/components/Currentweather";
 import * as actions from "@/actions";
 import {notFound} from "next/navigation";
-import WeatherColumn from "@/app/components/WeatherColumn";
-import PointerWrapper from "../../components/PointerWrapper";
+import WeatherColumn from "@/components/WeatherColumn";
+import PointerWrapper from "@/components/PointerWrapper";
 import {unstable_cache} from "next/cache";
 
 const getCachedWeather = unstable_cache(

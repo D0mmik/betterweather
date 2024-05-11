@@ -2,6 +2,7 @@
 import SideMenuButton from "./SideMenuButton";
 import Link from "next/link";
 import Image from "next/image";
+import {SignedIn, SignedOut, SignInButton, SignOutButton} from "@clerk/nextjs";
 
 export default async function SideMenu() {
   return (
@@ -31,7 +32,19 @@ export default async function SideMenu() {
           />
         </div>
         <div className="flex w-10/12 flex-col items-center">
-          <SideMenuButton ButtonTitle="Log Out" backgroundImage="/Logout.svg" />
+          <div className="m-4 flex w-full flex-row items-center justify-start">
+            <Image width="58" height="58" src={"/Logout.svg"} alt="" className="p-4"/>
+            <SignedOut>
+              <SignInButton>
+                <button className="text-[#A6B6BF]">Login</button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <SignOutButton>
+                <button className="text-[#A6B6BF]">Log out</button>
+              </SignOutButton>
+            </SignedIn>
+          </div>
         </div>
       </div>
     </div>
