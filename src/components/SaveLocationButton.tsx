@@ -2,17 +2,18 @@
 import SavedSvg from "@/components/icons/sideMenuICons/savedSvg";
 import {useState} from "react";
 import {useUser} from "@clerk/nextjs";
+import {deleteCity, postCity} from "@/actions";
 
-export default function SaveLocationButton({color, city} : {color : string, city : string}) {
+export default function SaveLocationButton({color, city, saved} : {color : string, city : string, saved : boolean}) {
 
   const {user} = useUser()
 
-  const [clicked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(saved)
   let fill = clicked ? "#F45866" : color;
 
   const SaveLocation = () => {
     setClicked(!clicked)
-    console.log((clicked ? "unsave " : "save ") + user?.id + " " + city)
+    clicked ? deleteCity(city) : postCity(city)
   }
 
 

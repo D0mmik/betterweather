@@ -21,6 +21,7 @@ export default function Searchbar() {
             />
           </button>
           <input
+            autoComplete="address-level2"
             name="location"
             type="text"
             placeholder="Search something here..."

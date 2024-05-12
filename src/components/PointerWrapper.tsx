@@ -4,7 +4,6 @@ import PressureGraph from "./Graphs/PressureGraph";
 interface PointerWrapperProps {
   weather: WeatherResponse;
 }
-import PressuerGraph from "./Graphs/PressureGraph";
 import RainGraph from "./Graphs/RainGraph";
 import UVGraph from "./Graphs/UVGraph";
 import WeatherPointer from "./WeatherPointer";

@@ -7,6 +7,8 @@ import WindSvg from "@/components/icons/windSvg";
 import RainDropSvg from "@/components/icons/raindropSvg";
 import SavedSvg from "@/components/icons/sideMenuICons/savedSvg";
 import SaveLocationButton from "@/components/SaveLocationButton";
+import {getCity} from "@/actions";
+import {SignedIn} from "@clerk/nextjs";
 
 interface CurrentweatherProps {
   weather : WeatherResponse
@@ -15,7 +17,8 @@ interface CurrentweatherProps {
 export default async function CurrentWeather({weather} : CurrentweatherProps) {
 
   let colors : {bgColor : string; textColor : string}  = { bgColor: '', textColor: '' };
-    colors = await getColor(new Date(weather.current.dt * 1000).toLocaleString(undefined,{timeZone : weather.timezone }));
+  colors = await getColor(new Date(weather.current.dt * 1000).toLocaleString(undefined,{timeZone : weather.timezone }));
+  const saved = (await getCity(weather?.city)).rowCount >= 1;
   return (
     <section className={`w-[90%] h-2/5 flex rounded-xl justify-between mt-5 font-sans select-none`} style={{backgroundColor : colors.bgColor, color : colors.textColor}}>
       <div className="m-8 flex flex-col justify-between w-[50%]">
@@ -23,7 +26,9 @@ export default async function CurrentWeather({weather} : CurrentweatherProps) {
           <div className="flex flex-row items-center">
             <LocationSvg color={colors.textColor} />
             <h2 className="text-xl capitalize">{weather?.city}</h2>
-              <SaveLocationButton color={colors.textColor} city={weather?.city}/>
+              <SignedIn>
+                <SaveLocationButton color={colors.textColor} city={weather?.city} saved={saved}/>
+              </SignedIn>
           </div>
           <h2 className="font-light">Dnes {await ConvertTime(weather?.current.dt, weather?.timezone)}</h2>
         </div>

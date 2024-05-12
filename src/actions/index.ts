@@ -2,6 +2,8 @@
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import {notFound, redirect} from "next/navigation";
 import {revalidatePath} from "next/cache";
+import {createClient} from "@vercel/postgres";
+import {currentUser} from "@clerk/nextjs/server";
 
 const API_KEY = '79e9110f4e47d681b1dedd4758c448f4';
 
@@ -52,6 +54,15 @@ export async function getWeatherData(city: string): Promise<{ current: any; city
   }
 }
 
+export async function reverseGeoCode(lat: number, lon: number) {
+  try {
+    const response = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`);
+    return response.data; // Assuming the response contains the desired data
+  } catch (error) {
+    throw new Error('Failed to reverse geocode location'); // Handle error gracefully
+  }
+}
+
 export async function goToWeather(formState: { message: string }, formData: FormData) {
   let location;
   try {
@@ -69,4 +80,73 @@ export async function goToWeather(formState: { message: string }, formData: Form
   }
   revalidatePath("/dashboard/" + location.toLowerCase())
   redirect("/dashboard/" + location.toLowerCase())
+}
+
+export async function getWeatherSavedCity(city : string) {
+  city = encodeURIComponent(city)
+  return  await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
+}
+
+export async function getCity(city : string) {
+
+  const user = await currentUser();
+  city = encodeURIComponent(city.toString())
+  const client = createClient();
+  await client.connect();
+  let result = null;
+
+  try {
+    result = await client.sql`SELECT * FROM saved_cities WHERE user_id = ${user?.id} AND city_name = ${city}`;
+  } finally {
+    await client.end();
+  }
+  return result
+}
+
+export async function postCity(city : string) {
+
+  const user = await currentUser();
+  city = encodeURIComponent(city.toString())
+  const client = createClient();
+  await client.connect();
+
+  try {
+    await client.sql`INSERT INTO saved_cities (user_id, city_name) VALUES (${user?.id}, ${city})`;
+  } finally {
+    await client.end();
+  }
+}
+
+export async function deleteCity(city: string) {
+  const user = await currentUser();
+  const client = createClient();
+  city = encodeURIComponent(city.toString())
+  await client.connect();
+
+  try {
+    await client.sql`DELETE FROM saved_cities WHERE user_id = ${user?.id} AND city_name = ${city}`;
+  } finally {
+    await client.end();
+  }
+}
+
+export async function getAllCity() {
+  const user = await currentUser();
+  const client = createClient();
+  await client.connect();
+  let result = null;
+
+  try {
+    result = await client.sql`SELECT * FROM saved_cities WHERE user_id = ${user?.id}`;
+  } finally {
+    await client.end();
+  }
+  return result
+}
+
+export async function RedirectUser(city : string) {
+  "use server"
+  city = encodeURIComponent(city)
+  revalidatePath("/dashboard/" + city.toLowerCase())
+  redirect("/dashboard/" + city.toLowerCase())
 }
