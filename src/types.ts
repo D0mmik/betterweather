@@ -91,3 +91,9 @@ interface Coords {
   lon : number;
   lat : number;
 }
+
+interface DbCity {
+  id : number;
+  user_id : string;
+  city_name : string;
+}

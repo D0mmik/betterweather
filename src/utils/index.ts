@@ -21,12 +21,18 @@ export async function GetDate(dt : number) {
   return `${day} ${month}`;
 }
 
+export async function ConvertUTCtoLocalWithShift(dt : number , shiftFromUTCInSeconds : number) {
+  const currentUTCTime = new Date(dt * 1000);
+  const localTimeInCity = new Date(currentUTCTime.getTime() + (shiftFromUTCInSeconds * 1000));
+  return localTimeInCity.toLocaleString();
+}
+
 export const getColor = async (date : string)  => {
   const time = new Date(date).getHours();
   let bgColor, textColor;
 
   switch (true) {
-    case time >= 4 && time < 16:
+    case time >= 4 && time < 12:
       bgColor = "#FFC085";
       textColor = "#000000";
       break;

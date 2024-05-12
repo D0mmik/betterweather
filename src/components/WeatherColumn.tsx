@@ -1,5 +1,5 @@
 "use server"
-import HourlyWeather from "@/app/components/HourlyWeather";
+import HourlyWeather from "@/components/HourlyWeather";
 import {GetDate, GetDayName} from "@/utils";
 import Image from "next/image";
 

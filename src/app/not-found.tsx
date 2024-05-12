@@ -1,4 +1,5 @@
-import Searchbar from "@/app/components/Searchbar";
+"use server"
+import Searchbar from "@/components/Searchbar";
 
 export default async function ErrorPage() {
   return (

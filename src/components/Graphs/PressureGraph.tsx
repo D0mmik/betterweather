@@ -47,7 +47,7 @@ function GaugePointer() {
         strokeLinecap="round"
         strokeWidth="5"
       />
-      <circle cx={cx} cy={cy} r={5} fill="#FFFFFF" stroke="#24609B" />
+      <circle cx={cx} cy={cy} r={7} fill="#FFFFFF" stroke="#24609B" />
       <g
         transform={`translate(${target.x}, ${target.y}) rotate(${rotationAngle})`}
       >
@@ -60,11 +60,9 @@ function GaugePointer() {
   );
 }
 
-export default function PressuerGraph({ Pressure }: PressuerGraphProps) {
+export default function PressureGraph({ Pressure }: PressuerGraphProps) {
   return (
     <GaugeContainer
-      width={170}
-      height={170}
       startAngle={-120}
       endAngle={120}
       value={Pressure}

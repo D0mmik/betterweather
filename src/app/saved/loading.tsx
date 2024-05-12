@@ -1,6 +1,5 @@
 "use server"
-import Searchbar from "@/app/components/Searchbar";
-import CurrentWeather from "@/app/components/Currentweather";
+import Searchbar from "@/components/Searchbar";
 
 export default async function Loading() {
   return (
