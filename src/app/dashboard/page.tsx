@@ -28,7 +28,7 @@ export default function DashboardPage() {
     };
 
     getLocation();
-  }, []); // Empty dependency array to run effect only once
+  }, []);
 
   return (
     <main className="flex h-full flex-col items-center justify-start w-[55%]">
