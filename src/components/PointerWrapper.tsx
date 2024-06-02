@@ -11,7 +11,7 @@ import WindGraph from "./Graphs/WindGraph";
 
 export default function PointerWrapper({ weather }: PointerWrapperProps) {
   return (
-    <section className="mt-8 grid h-2/5 grid-cols-2 grid-rows-2 gap-9 font-sans w-[90%]">
+    <section className="mt-8 grid h-2/5 grid-cols-2 grid-rows-2 gap-9 font-sans w-[90%] max-sm:hidden">
       <WeatherPointer
         PointerTitle={"Wind"}
         PointerDesc={"Today wind speed"}
@@ -26,7 +26,9 @@ export default function PointerWrapper({ weather }: PointerWrapperProps) {
         PointerDesc={"Today rain chance"}
         PointerValue={Math.round(weather?.daily[0].pop * 100) + " %"}
         PointerCompas={false}
-        PointerGraph={<RainGraph RainPercentage={Math.round(weather?.daily[0].pop * 100)} />}
+        PointerGraph={
+          <RainGraph RainPercentage={Math.round(weather?.daily[0].pop * 100)} />
+        }
       />
       <WeatherPointer
         PointerTitle={"Pressure"}
