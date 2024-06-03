@@ -20,7 +20,7 @@ export default function Searchbar() {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   return (
-    <div className="flex h-25 items-end justify-around w-[90%]">
+    <div className="flex h-25 items-end justify-around w-[90%] sm:mt-8">
       <div className="mt-2 flex w-full flex-row justify-between max-sm:mb-0 max-sm:flex-col">
         <div className="w-full hidden items-center justify-between mt-3 max-sm:flex">
           <Link
