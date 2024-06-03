@@ -24,7 +24,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={jakarta.className}>
-          <div className="w-full h-screen flex justify-start items-center flex-row divide-x divide-[#E1E8EC] max-sm:flex-col max-sm:h-full">
+          <div className="w-full h-screen flex justify-start items-center flex-row divide-x divide-[#E1E8EC] max-sm:flex-col max-sm:w-full max-sm:h-full max-sm:divide-[#ffffff]">
             <nav className="h-full w-1/5 max-sm:hidden">
               <SideMenu />
             </nav>

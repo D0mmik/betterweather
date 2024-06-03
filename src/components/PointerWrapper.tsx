@@ -3,15 +3,25 @@ import PressureGraph from "./Graphs/PressureGraph";
 
 interface PointerWrapperProps {
   weather: WeatherResponse;
+  visibleOnMobile: boolean;
 }
 import RainGraph from "./Graphs/RainGraph";
 import UVGraph from "./Graphs/UVGraph";
 import WeatherPointer from "./WeatherPointer";
 import WindGraph from "./Graphs/WindGraph";
 
-export default function PointerWrapper({ weather }: PointerWrapperProps) {
+export default function PointerWrapper({
+  weather,
+  visibleOnMobile,
+}: PointerWrapperProps) {
   return (
-    <section className="mt-8 grid h-2/5 grid-cols-2 grid-rows-2 gap-9 font-sans w-[90%] max-sm:hidden">
+    <section
+      className={`${
+        visibleOnMobile
+          ? " hidden max-sm:grid grid-cols-1 grid-rows-4 mb-6 "
+          : "max-sm:hidden grid-cols-2 grid-rows-2 "
+      } mt-8 grid h-2/5 gap-9 font-sans w-[90%] `}
+    >
       <WeatherPointer
         PointerTitle={"Wind"}
         PointerDesc={"Today wind speed"}

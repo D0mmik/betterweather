@@ -25,10 +25,10 @@ export default async function WeatherPage(props: { params: { city: string } }) {
       <main className="flex h-full flex-col items-center justify-start w-[55%] max-sm:w-full ">
         <Searchbar />
         <CurrentWeather weather={weather} />
-        <PointerWrapper weather={weather} />
+        <PointerWrapper weather={weather} visibleOnMobile={false} />
       </main>
       <WeatherColumn weather={weather} />
-      <PointerWrapperMobile weather={weather} />
+      <PointerWrapper weather={weather} visibleOnMobile={true} />
     </>
   );
 }
