@@ -1,10 +1,11 @@
 interface UVGraphProps {
   UVIndex: number;
+  idGradient : string
 }
 import * as React from "react";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
 
-export default function RainGraph({ UVIndex }: UVGraphProps) {
+export default function RainGraph({ UVIndex, idGradient }: UVGraphProps) {
   const settings = {
     width: 150,
     height: 150,
@@ -36,13 +37,13 @@ export default function RainGraph({ UVIndex }: UVGraphProps) {
           stroke: " #ECF3F8",
         },
         [`& .${gaugeClasses.referenceArc}`]: {
-          fill: "url(#referenceArcGradient)",
+          fill: `url(#${idGradient})`,
         },
       })}
     >
       <defs>
         <linearGradient
-          id="referenceArcGradient"
+          id={idGradient}
           x1="0%"
           y1="0%"
           x2="100%"

@@ -54,7 +54,7 @@ export default function PointerWrapper({
         PointerDesc={"Today UV Index"}
         PointerValue={Math.round(weather?.current.uvi).toString()}
         PointerCompas={false}
-        PointerGraph={<UVGraph UVIndex={weather?.current.uvi} />}
+        PointerGraph={<UVGraph UVIndex={weather?.current.uvi} idGradient={Math.round(Math.random() * 10).toString()} />}
       />
     </section>
   );

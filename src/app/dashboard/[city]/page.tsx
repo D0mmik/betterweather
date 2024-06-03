@@ -5,7 +5,6 @@ import * as actions from "@/actions";
 import { notFound } from "next/navigation";
 import WeatherColumn from "@/components/WeatherColumn";
 import PointerWrapper from "@/components/PointerWrapper";
-import PointerWrapperMobile from "@/components/PointerWrapperMobile";
 import { unstable_cache } from "next/cache";
 
 const getCachedWeather = unstable_cache(
