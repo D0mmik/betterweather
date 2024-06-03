@@ -1,7 +1,7 @@
-"use client"
-import React, {useEffect, useState} from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
 import Searchbar from "@/components/Searchbar";
-import {RedirectUser, reverseGeoCode} from "@/actions";
+import { RedirectUser, reverseGeoCode } from "@/actions";
 
 export default function DashboardPage() {
   const [error, setError] = useState<string>();
@@ -9,19 +9,21 @@ export default function DashboardPage() {
   useEffect(() => {
     const getLocation = () => {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          console.log(position.coords.latitude, position.coords.longitude);
-          reverseGeoCode(position.coords.latitude, position.coords.longitude)
-            .then((response) => {
-              RedirectUser(response[0]?.name)
-
-            })
-            .catch((error) => {
-              setError(error.message);
-            });
-        }, (error) => {
-          setError(error.message);
-        });
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            console.log(position.coords.latitude, position.coords.longitude);
+            reverseGeoCode(position.coords.latitude, position.coords.longitude)
+              .then((response) => {
+                RedirectUser(response[0]?.name);
+              })
+              .catch((error) => {
+                setError(error.message);
+              });
+          },
+          (error) => {
+            setError(error.message);
+          }
+        );
       } else {
         setError("Geolocation is not supported by this browser.");
       }
@@ -31,10 +33,9 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <main className="flex h-full flex-col items-center justify-start w-[55%]">
-      <Searchbar/>
-      <div className="flex flex-col">
-        {error && error}
-      </div>
-    </main>);
+    <main className="flex h-full flex-col items-center justify-start w-[55%] max-sm:w-full">
+      <Searchbar />
+      <div className="flex flex-col">{error && error}</div>
+    </main>
+  );
 }

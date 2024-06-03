@@ -3,10 +3,10 @@ import { LineChart, Line, ResponsiveContainer } from "recharts";
 
 export default function TemperatureGraph({
   tempData,
-  color
+  color,
 }: {
   tempData: Temperature;
-  color : string;
+  color: string;
 }) {
   let data = undefined;
   if (tempData) {
@@ -19,7 +19,7 @@ export default function TemperatureGraph({
     data = Object.entries(filteredTempData).map(([name, pv]) => ({ name, pv }));
   }
   return (
-    <div className="m-6 flex w-1/2 flex-col items-center justify-center rounded-xl bg-white/30">
+    <div className="m-6 flex w-1/2 flex-col items-center justify-center rounded-xl bg-white/30 max-sm:hidden">
       <div className="flex h-full w-full flex-col items-center justify-around p-6">
         <h2 className="w-full text-xl font-normal">Temperature</h2>
         <div className="flex h-2/5 items-center justify-center w-[90%]">
